@@ -1,0 +1,22 @@
+
+<index wx:if="{{PageCur=='index'}}" bind:mycount="cartCount"></index>
+<shopcart wx:if="{{PageCur=='shopcart'}}"></shopcart>
+
+<view class="cu-bar tabbar bg-white shadow foot">
+  <view class="action" bindtap="NavChange" data-cur="index">
+    <view class='cuIcon-cu-image'>
+      <image src="/pages/image/tabbar/about{{PageCur=='index'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='index'?'text-green':'text-gray'}}">主页</view>
+  </view>
+  <view class="action" bindtap="NavChange" data-cur="shopcart">
+    <view class='cuIcon-cu-image'>
+      <image src="/pages/image/tabbar/basics{{PageCur=='shopcart'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='shopcart'?'text-green':'text-gray'}}">购物车</view>
+    <view class="cu-tag badge" wx:if="{{count!=0}}">{{count}}</view>
+  </view>
+</view>
+
+
+

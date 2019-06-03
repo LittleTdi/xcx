@@ -1,0 +1,239 @@
+
+.cart-container{
+  width: 100%;
+  min-height: 100vh;
+  background: rgb(245, 245, 245);
+}
+.cart-head{
+  background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
+}
+.head{
+  width: 100%;
+  height: 80rpx;
+  text-align: center;
+  font-size: 35rpx;
+  color: #fff;
+}
+.cart-address{
+  background: #fff;
+  padding: 20rpx 20rpx;
+  margin: 10rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  font-size: 30rpx;
+  line-height: initial;
+}
+.address-icon>image{
+  width: 38rpx;
+  height: 35rpx;
+}
+.address-icon-right>image{
+  width: 30rpx;
+  height: 26rpx;
+}
+.cart-address .address-icon .address{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sendTime {
+	background-color: #fff;
+	padding: 1rpx 30rpx;
+	display: flex;
+	align-items: center;
+	min-height: 90rpx;
+	justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+.sendTime .title {
+	text-align: justify;
+	padding-right: 30rpx;
+	font-size: 30rpx;
+  font-weight: 700;
+	position: relative;
+	height: 60rpx;
+	line-height: 60rpx;
+}
+.sendTime picker {
+	flex: 1;
+	padding-right: 40rpx;
+	overflow: hidden;
+	position: relative;
+}
+.sendTime picker .picker {
+	line-height: 90rpx;
+	font-size: 24rpx;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	text-align: right;
+  color: rgb(25, 158, 219);
+}
+.sendTime .sendTime-image{
+  margin-right: -10rpx;
+}
+.cart-list .list-tab{
+  background: #fff;
+  padding: 20rpx;
+  font-size: 30rpx;
+}
+.cart-list .list-content{
+  background: #fff;
+}
+.cart-list .list{
+  background: rgb(224, 224, 224);
+  padding: 15rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 10rpx;
+}
+.cart-list .list-empty{
+  color: rgb(133, 133, 133);
+  font-size: 30rpx;
+  height: 125rpx;
+  text-align: center;
+  line-height: 125rpx;
+}
+.cart-list .list>view image{
+  width: 100rpx;
+  height: 120rpx;
+}
+.cart-list .list>view.lap-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 500rpx;
+  font-size: 28rpx;
+  padding: 8rpx 0 15rpx 0;
+} 
+.cart-list .list>view.lap-content>.lap-class{
+  font-size: 22rpx;
+  color: rgb(117, 117, 117);
+}
+.cart-list .list>view.lap-price{
+  font-size: 25rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 8rpx 0 15rpx 0;
+}
+.cart-list .list>view.lap-price .lap-num{
+  color: rgb(117, 117, 117);
+}
+.fare{
+  background: #fff;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  margin-bottom: 5rpx;
+  margin-top: 10rpx;
+}
+.count{
+  background: #fff;
+  padding: 20rpx;
+  text-align: right;
+  color: 28rpx;
+  margin-bottom: 10rpx;
+  font-size: 32rpx
+}
+.count text{
+  color: rgb(248, 105, 38);
+}
+
+.cu-form-group {
+	background-color: #fff;
+	padding: 1rpx 30rpx;
+	display: flex;
+	align-items: flex-start;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
+.cu-form-group textarea {
+	margin: 32rpx 0 30rpx 30rpx;
+	height: 4.6em;
+	width: 100%;
+	line-height: 1.2em;
+	flex: 1;
+	font-size: 24rpx;
+	padding: 0;
+}
+.cu-form-group.align-start .title {
+	height: 1em;
+	margin-top: 32rpx;
+	line-height: 1em;
+  font-size: 28rpx;
+}
+.cart-btn{
+  margin-top: 20rpx;
+  background: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 125rpx;
+}
+.cart-btn .pay{
+  padding: 30rpx;
+}
+.cart-btn .pay .price{
+  color: rgb(248, 105, 38);
+}
+.cart-btn .btn{
+  background: rgb(33, 192, 245);
+  color: #fff;
+  font-weight: 700;
+  padding: 30rpx;
+  font-size: 35rpx;
+}
+
+.cu-modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1110;
+	opacity: 0;
+	outline: 0;
+	text-align: center;
+	-ms-transform: scale(1.185);
+	transform: scale(1.185);
+	backface-visibility: hidden;
+	perspective: 2000rpx;
+	background: rgba(0, 0, 0, 0.6);
+	transition: all 0.3s ease-in-out 0s;
+	pointer-events: none;
+}
+.cu-modal.show {
+	opacity: 1;
+	transition-duration: 0.3s;
+	-ms-transform: scale(1);
+	transform: scale(1);
+	overflow-x: hidden;
+	overflow-y: auto;
+	pointer-events: auto;
+}
+
+.cu-dialog {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
+	width: 680rpx;
+	max-width: 100%;
+	background-color: #f8f8f8;
+	border-radius: 10rpx;
+	overflow: hidden;
+  top: 50%;
+}
+.padding-xl {
+	padding: 50rpx;
+  font-size: 30rpx;
+}

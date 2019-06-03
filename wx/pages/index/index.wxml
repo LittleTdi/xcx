@@ -1,0 +1,124 @@
+
+<view class="container {{modalName=='viewModal'?'show':''}}">
+  <view class='top'>
+    <image class='bgimage' src='/pages/image/bg1.jpg'></image>
+    <view class='swiper'>
+      <swiper class="card-swiper square-dot" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper">
+        <swiper-item wx:for="{{swiperList}}" wx:key='index' class="{{cardCur==index?'cur':''}}">
+          <view class="swiper-item">
+            <image src="{{href + item.simg_url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="dots">
+        <block wx:for="{{swiperList}}" wx:key="index">
+          <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class='VerticalBox'>
+    <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:600rpx">
+      <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{laptopList}}" wx:key="index" bindtap='tabSelect' data-id="{{index}}">
+        <text>{{item.name}}</text>
+        <view wx:if="{{item.count!=0}}" class="cu-tag badge">{{item.count}}</view>
+        <view class="{{index==TabCur?'item-border':''}}"></view>
+      </view>
+    </scroll-view>
+    <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(100vh - 375rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+      <view class="padding-top padding-lr" wx:for="{{laptopList}}" wx:for-index="parent" wx:key='parent' id="main-{{parent}}">
+        <view class='cu-bar solid-bottom bg-white'>
+          <text class='cu-bar-round'></text>
+          <text class='cu-bar-contanier'>{{item.name}}</text>
+        </view>
+        <view class='cu-list menu-avatar' wx:for="{{item.data}}" wx:for-index="child" wx:key='child' bindtap="showModal" data-target="viewModal" data-item='{{item}}'>
+          <view class='cu-item'>
+            <view class='cu-avatar'>
+              <image src='{{href + item.img_url}}'></image>
+            </view>
+            <view class='content'>
+              <view class='title'>{{item.lname}}</view>
+              <view class='submit'>{{item.submit}}</view>
+              <view class='price'>￥{{item.price}}</view>
+            </view>
+            <view class='cu-btn'>
+              <text class='btn down' catchtap='numDown' data-index='{{parent}}' data-id='{{child}}' wx:if="{{item.num!=0}}">-</text>
+              <text wx:if="{{item.num!=0}}">{{item.num}}</text>
+              <text class='btn add' catchtap='numAdd' data-index='{{parent}}' data-id='{{child}}'>+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='VerticalMain-box'></view>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="DrawerClose {{modalName=='viewModal'?'show':''}}" bindtap="hideModal"></view>
+
+<view class="DrawerWindow {{modalName=='viewModal'?'show':''}}">
+  <view class='DrawerWindow-container' wx:if="{{modalShow=='viewModal'}}">
+    <view class='Dw-top'>
+      <view class="Dw-avatar">
+        <image src='{{href + modalData.img_url}}'></image>
+        <image src='/pages/image/good.jpg' class='good'></image>
+      </view>
+      <view class='Dw-content'>
+        <view class='Dw-title'>{{modalData.lname}}</view>
+        <view class='Dw-submit'>{{modalData.submit}}</view>
+        <view class='Dw-price'>￥{{modalData.price}}</view>
+      </view>
+    </view>
+    <view class='Dw-rmd'>
+      <view class='text'>推荐</view>
+      <view class='Dw-rmdList'>
+        <view class='rmdContent' wx:for="{{rmdList}}" wx:key="index">
+          <view class='rmd-bg'>
+            <image src='{{href + item.img_url}}'></image>
+          </view>
+          <view>
+            <view class='rmd-title'>{{item.lname}}</view>
+            <view class='rmd-submit'>{{item.submit}}</view>
+            <view class='rmd-price'>￥{{item.price}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='DrawerWindow-shopCart' wx:if="{{modalShow==''}}">
+    <view class='SC-box'>
+      <view class='lap-msg'>
+        <view class='msg-bg'><image src='{{href + modalData.img_url}}'></image></view>
+        <view class='msg'>
+          <view class='msg-title'>{{modalData.lname}}</view>
+          <view class='msg-ark'>{{cup[checkCup]}}/{{sweet[checkSweet]}}/{{ice[checkIce]}}</view>
+          <view class='msg-price'>￥{{modalData.price}}</view>
+        </view>
+      </view>
+      <view class='lap-class'>
+        <view class='cup'>
+          <view>大杯中杯</view>
+          <view class='btn'>
+            <button class="{{index==checkCup?'check':''}}" wx:for="{{cup}}" wx:key="index" bindtap='checkCbtn' data-index="{{index}}">{{item}}</button>
+          </view>
+        </view>
+        <view class='sweet'>
+          <view>糖度</view>
+          <view class='btn'>
+            <button class="{{index==checkSweet?'check':''}}" wx:for="{{sweet}}" wx:key="index" bindtap='checkSbtn' data-index="{{index}}">{{item}}</button>
+          </view>
+        </view>
+        <view class='ice'>
+          <view>冰</view>
+          <view class='btn'>
+            <button class="{{index==checkIce?'check':''}}" wx:for="{{ice}}" wx:key="index" bindtap='checkIbtn' data-index="{{index}}">{{item}}</button>
+          </view>
+        </view>
+      </view>
+      <view class='lap-btn'>
+        <button bindtap='checkOK'>选好了</button>
+      </view>
+    </view>
+  </view>
+</view>
+

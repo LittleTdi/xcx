@@ -1,0 +1,10 @@
+/**app.wxss**/
+/* 隐藏滚动条*/
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+} 
+view, scroll-view, swiper, button, input, textarea, label, navigator, image {
+  box-sizing:border-box;
+}

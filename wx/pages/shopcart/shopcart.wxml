@@ -1,0 +1,67 @@
+
+<view class='cart-container'>
+  <view class='cart-head'>
+    <view class='head' style='height:{{style}}px;line-height:{{custom.bottom + custom.top}}px'>
+      <view class='content'>购物车</view>
+    </view>
+  </view>
+  <view class='cart-address'>
+    <view class='address-icon'>
+      <image src='/pages/image/address.jpg'></image>
+    </view>
+    <view class='address' bindtap='getLocation'>{{address}}</view>
+    <view class='address-icon-right'>
+      <image src='/pages/image/right.jpg'></image>
+    </view>
+  </view>
+  <view class='sendTime' wx:if="{{shopCart.length!=0}}">
+    <view class="title">送达时间</view>
+    <picker mode="time" value="{{time}}" start="{{startTime}}" end="{{endTime}}" bindchange="TimeChange">
+      <view class="picker">{{time}}</view>
+    </picker>
+    <view class='address-icon-right sendTime-image'><image src='/pages/image/right.jpg'></image></view>
+  </view>
+  <view class='cart-list'>
+    <view class='list-tab'>购物车列表</view>
+    <view class='list-content'>
+      <view class="list" wx:for="{{shopCart}}" wx:key="index">
+        <view class='lap-img'><image src='{{href + item.img_url}}'></image></view>
+        <view class='lap-content'>
+          <view class='title'>{{item.lname}}</view>
+          <view class='lap-class'>{{item.cup}}/{{item.sweet}}/{{item.ice}}</view>
+        </view>
+        <view class='lap-price'>
+          <view class='price'>￥{{item.price}}</view>
+          <view class='lap-num'>x{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='list-empty' wx:if="{{shopCart.length==0}}">
+      <view>空</view>
+    </view>
+    <view class='fare' wx:if="{{shopCart.length!=0}}">
+      <view>配送费</view>
+      <view>￥{{fare}}</view>
+    </view>
+    <view class='count' wx:if="{{shopCart.length!=0}}">
+      <view>小计￥<text>{{count}}</text></view>
+    </view>
+  </view>
+  <view class="cu-form-group align-start" wx:if="{{shopCart.length!=0}}">
+		<view class="title">备注：</view>
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" placeholder="备注说明"></textarea>
+	</view>
+  <view class='cart-btn' wx:if="{{shopCart.length!=0}}">
+    <view class='pay'>
+      <text>待支付</text>
+      <text class='price'>￥{{count}}</text>
+    </view>
+    <view class='btn' bindtap='submitList' data-target='Modal'>提交订单</view>
+  </view>
+</view>
+
+<view class="cu-modal {{showModel=='Modal'?'show':''}}" bindtap='hideModel' data-target='hide'>
+  <view class="cu-dialog">
+    <view class="padding-xl">购买成功</view>
+  </view>
+</view>
